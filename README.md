@@ -21,7 +21,7 @@
 ## 项目预览
 <table>
     <tr>
-        <td><img src="docs/preview/1.PNG"></td>
-        <td><img src="docs/preview/2.PNG"></td>
+        <!-- <td><img src="docs/preview/1.PNG"></td>
+        <td><img src="docs/preview/2.PNG"></td> -->
     <tr>
 </table>
