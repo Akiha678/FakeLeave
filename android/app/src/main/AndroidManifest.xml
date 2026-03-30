@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="leave"
+        android:label="请假程序"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
