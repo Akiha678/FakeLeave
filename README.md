@@ -1,16 +1,27 @@
-# leave
+<div align="center">
+<img src="docs/images/logo.png" width="120" alt="smartlab411"/>
 
-A new Flutter project.
+# 荆州学院请假程序
 
-## Getting Started
+基于Flutter的虚拟请假程序
 
-This project is a starting point for a Flutter application.
+<div align="center">
+    <a href="README_EN.md">🌍 English</a>
+</div>
 
-A few resources to get you started if this is your first Flutter project:
+[![GitHub](https://img.shields.io/badge/GitHub-Akiha678-blue?style=flat-square&logo=github)](https://github.com/Akiha678/FakeLeave)
+[![请假程序](https://img.shields.io/badge/请假程序-蒲公英下载-green?style=flat-square&logo=android)](https://www.pgyer.com/qingjiachengxu)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 项目简介
+这是一个基于Flutter的纯界面项目，专门为荆州学院设计的请假程序，启用后会出现一个假的请假界面，用于欺骗门卫保安。
+
+> 如果项目对您有帮助，请给个 Star 支持 ⭐ 这对我来说很重要，能给我带来长期更新维护的动力！
+
+## 项目预览
+<table>
+    <tr>
+        <td><img src="docs/preview/1.PNG"></td>
+        <td><img src="docs/preview/2.PNG"></td>
+    <tr>
+</table>
