@@ -45,6 +45,14 @@ class LeaveListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      showWarningDialog(
+        context,
+        content: '一、该软件仅供学习交流，与该软件有关的任何事件均与开发者无关！！！\n二、 因使用该软件造成的任何后果开发者不予承担\n三、使用者点击确认即被视为同意以上准则',
+      );
+    });
+
+
     return Scaffold(
       backgroundColor: const Color(0xFFF3F3F4),
       body: SafeArea(
@@ -295,4 +303,52 @@ class _LeaveItem {
   final String start;
   final String end;
   final String status;
+}
+
+Future<void> showWarningDialog(
+  BuildContext context, {
+  required String content,
+}) async {
+  return showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (context) {
+      return WillPopScope(
+        onWillPop: () async => false, // 禁止返回键关闭
+        child: AlertDialog(
+          title: const Text(
+            "警告",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.red,
+            ),
+          ),
+          content: Text(
+            content,
+            style: const TextStyle(fontSize: 14),
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          actions: [
+            SizedBox(
+              width: double.infinity,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text(
+                  "确认",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    },
+  );
 }

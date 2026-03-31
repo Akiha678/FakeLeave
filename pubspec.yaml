@@ -30,3 +30,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+  fonts:
+    - family: PingFang
+      fonts:
+        - asset: assets/font/pingfang.ttf
