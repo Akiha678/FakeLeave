@@ -1,5 +1,4 @@
 <div align="center">
-<img src="docs/images/logo.png" width="120" alt="smartlab411"/>
 
 # 荆州学院请假程序
 
