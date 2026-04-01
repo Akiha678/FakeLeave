@@ -48,10 +48,10 @@ class LeaveListPage extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       showWarningDialog(
         context,
-        content: '一、该软件仅供学习交流，与该软件有关的任何事件均与开发者无关！！！\n二、 因使用该软件造成的任何后果开发者不予承担\n三、使用者点击确认即被视为同意以上准则',
+        content:
+            '一、该软件仅供学习交流，与该软件有关的任何事件均与开发者无关！！！\n二、 因使用该软件造成的任何后果开发者不予承担\n三、使用者点击确认即被视为同意以上准则',
       );
     });
-
 
     return Scaffold(
       backgroundColor: const Color(0xFFF3F3F4),
@@ -313,20 +313,14 @@ Future<void> showWarningDialog(
     context: context,
     barrierDismissible: false,
     builder: (context) {
-      return WillPopScope(
-        onWillPop: () async => false, // 禁止返回键关闭
+      return PopScope(
+        canPop: false,
         child: AlertDialog(
           title: const Text(
             "警告",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.red,
-            ),
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
           ),
-          content: Text(
-            content,
-            style: const TextStyle(fontSize: 14),
-          ),
+          content: Text(content, style: const TextStyle(fontSize: 14)),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
@@ -339,10 +333,7 @@ Future<void> showWarningDialog(
                 },
                 child: const Text(
                   "确认",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ),
             ),

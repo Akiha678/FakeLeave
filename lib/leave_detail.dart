@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 
 class LeaveDetailPage extends StatefulWidget {
   const LeaveDetailPage({super.key});
@@ -8,6 +10,8 @@ class LeaveDetailPage extends StatefulWidget {
 }
 
 class _LeavePageState extends State<LeaveDetailPage> {
+  static const String _storageKey = 'leave_detail_values_v1';
+
   final ScrollController _controller = ScrollController();
 
   final Map<String, String> _values = <String, String>{
@@ -39,6 +43,43 @@ class _LeavePageState extends State<LeaveDetailPage> {
   };
 
   String _v(String key) => _values[key] ?? '';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadValues();
+  }
+
+  Future<void> _loadValues() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String? raw = prefs.getString(_storageKey);
+    if (raw == null || raw.isEmpty) {
+      return;
+    }
+
+    try {
+      final Map<String, dynamic> parsed =
+          jsonDecode(raw) as Map<String, dynamic>;
+      if (!mounted) {
+        return;
+      }
+
+      setState(() {
+        for (final MapEntry<String, dynamic> entry in parsed.entries) {
+          if (_values.containsKey(entry.key) && entry.value is String) {
+            _values[entry.key] = entry.value as String;
+          }
+        }
+      });
+    } catch (_) {
+      // Keep defaults if persisted data is malformed.
+    }
+  }
+
+  Future<void> _saveValues() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_storageKey, jsonEncode(_values));
+  }
 
   Future<void> _editField(String key, String label) async {
     String editedText = _v(key);
@@ -84,6 +125,7 @@ class _LeavePageState extends State<LeaveDetailPage> {
         _values['flowReviewer'] = result;
       }
     });
+    await _saveValues();
   }
 
   @override
